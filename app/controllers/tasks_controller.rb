@@ -40,7 +40,7 @@ before_action :find_task, only: [:show, :edit, :update, :destroy]
   private
 
 def tasks_params
-  params.require(:task).permit(:title, :descriprions, :company, :url)
+  params.require(:task).permit(:title, :descriprions, :company, :url, :category_id)
 end
 
 def find_task
