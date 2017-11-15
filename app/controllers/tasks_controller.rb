@@ -1,7 +1,12 @@
 class TasksController < ApplicationController
 before_action :find_task, only: [:show, :edit, :update, :destroy]
   def index
+    if params[:category].blank?
     @tasks = Task.all.order("created_at DESC")
+    else
+    @category_id = category.find_by(name: params[:category].id)
+    @tasks = Task.where(category_id: @category_id).order("created_at DESC")
+    end
   end
 
   def show
